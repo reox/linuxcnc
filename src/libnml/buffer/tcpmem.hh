@@ -28,23 +28,23 @@ extern "C" {
 class TCPMEM:public CMS {
   public:
     TCPMEM(const char *bufline, const char *procline);
-      virtual ~ TCPMEM();
+    virtual ~ TCPMEM() override;
 
     /* Overloaded CMS functions. */
-    CMS_STATUS clear();
-    int check_if_read();
-    int get_msg_count();
-    int get_queue_length();
-    int get_space_available();
-    CMS_STATUS read();
-    CMS_STATUS blocking_read(double);
-    CMS_STATUS peek();
-    CMS_STATUS write(void *data);
-    CMS_STATUS write_if_read(void *data);
-//    int login(const char *, const char *);
-    void reconnect();
-    void disconnect();
-    CMS_DIAGNOSTICS_INFO *get_diagnostics_info();
+    CMS_STATUS clear() override;
+    int check_if_read() override;
+    int get_msg_count() override;
+    int get_queue_length() override;
+    int get_space_available() override;
+    CMS_STATUS read() override;
+    CMS_STATUS blocking_read(double) override;
+    CMS_STATUS peek() override;
+    CMS_STATUS write(void *data, int *serial_number_out) override;
+    CMS_STATUS write_if_read(void *data, int *serial_number_out) override;
+//    int login(const char *, const char *) override;
+    void reconnect() override;
+    void disconnect() override;
+    CMS_DIAGNOSTICS_INFO *get_diagnostics_info() override;
 
   protected:
       CMS_STATUS handle_old_replies();
