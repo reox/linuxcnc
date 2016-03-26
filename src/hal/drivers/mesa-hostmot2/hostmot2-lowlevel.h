@@ -120,6 +120,10 @@ struct hm2_lowlevel_io_struct {
     // to amortize latency on multiple ethernet devices
     bool read_requested;
 
+    // the time (in rtapi_get_time units) for the read function to wait for a
+    // reply
+    unsigned long long read_deadline;
+
     // TRUE if it is useful to split reads into a request and response part
     bool split_read;
 

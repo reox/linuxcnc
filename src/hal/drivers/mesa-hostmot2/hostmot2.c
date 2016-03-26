@@ -87,6 +87,7 @@ static void hm2_read_request(void *void_hm2, long period) {
     if ((*hm2->llio->io_error) != 0) return;
     hm2_queue_read(hm2);
     hm2->llio->read_requested = true;
+    hm2->llio->read_deadline = rtapi_get_time() + period / 10;
 }
 
 static void hm2_read(void *void_hm2, long period) {
