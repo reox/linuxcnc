@@ -34,7 +34,7 @@ numpy.core.seterr(**olderr)
 from rs274.author import Gcode
 import rs274.options
 
-from math import *
+from math import sqrt, tan, pi, hypot, sin, ceil
 import operator
 
 epsilon = 1e-5
@@ -173,7 +173,6 @@ class Reduce_Scan_Lace:
             return j + keep - j%keep
 
         for i, (flag, span) in enumerate(self.converter(primary, items)):
-            subspan = []
             a = None
             for i, si in enumerate(span):
                 ki = si[idx]
@@ -752,7 +751,6 @@ def main():
         Tkinter._default_root.destroy()
         Tkinter._default_root = None
     im = Image.open(im_name)
-    size = im.size
     im = im.convert("L") #grayscale
     w, h = im.size
 
